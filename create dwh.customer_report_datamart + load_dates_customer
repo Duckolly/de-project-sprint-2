@@ -1,0 +1,31 @@
+--DROP TABLE IF EXISTS dwh.customer_report_datamart;
+CREATE TABLE dwh.customer_report_datamart (
+	id INT8 GENERATED ALWAYS AS IDENTITY( INCREMENT BY 1 MINVALUE 1 MAXVALUE 9223372036854775807 START 1 CACHE 1 NO CYCLE) NOT NULL,
+	customer_id INT8 NOT NULL,
+	customer_name varchar NOT NULL,
+	customer_address varchar NOT NULL,
+	customer_birthday DATE NOT NULL,
+	customer_email varchar NOT NULL,
+	customer_money numeric(20, 2) NOT NULL,
+	platform_money INT NOT NULL,
+	count_order INT NOT NULL,
+	avg_price_order numeric(10, 2) NOT NULL,
+	median_time_order_completed numeric(10, 1) NULL,
+	top_product_category varchar NOT NULL,
+	top_craftsman_id varchar NOT NULL,
+	count_order_created INT NOT NULL,
+	count_order_in_progress INT NOT NULL,
+	count_order_delivery INT NOT NULL,
+	count_order_done INT NOT NULL,
+	count_order_not_done INT NOT NULL,
+	report_period varchar NOT NULL,
+	CONSTRAINT customer_report_datamart_pk PRIMARY KEY (id)
+);
+
+--DROP TABLE IF EXISTS dwh.load_dates_customer_report_datamart;
+--Create the load_dates_customer_report_datamart table
+CREATE TABLE dwh.load_dates_customer_report_datamart (
+  id INT8 GENERATED ALWAYS AS IDENTITY NOT NULL,
+  load_dttm DATE,
+  CONSTRAINT load_dates_customer_report_datamart_pk PRIMARY KEY (id)
+);
