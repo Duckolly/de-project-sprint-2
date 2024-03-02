@@ -26,6 +26,6 @@ CREATE TABLE dwh.customer_report_datamart (
 --Create the load_dates_customer_report_datamart table
 CREATE TABLE dwh.load_dates_customer_report_datamart (
   id INT8 GENERATED ALWAYS AS IDENTITY NOT NULL,
-  load_dttm DATE,
+  load_dttm DATE NOT NULL,
   CONSTRAINT load_dates_customer_report_datamart_pk PRIMARY KEY (id)
 );
