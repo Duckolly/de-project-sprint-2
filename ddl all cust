@@ -23,7 +23,7 @@ dwh_top_craftsman AS (
 		(SELECT
 			fo.customer_id,
 			fo.craftsman_id,
-			RANK() OVER (PARTITION BY fo.customer_id ORDER BY COUNT(*) DESC) rank
+			DENSE_RANK() OVER (PARTITION BY fo.customer_id ORDER BY COUNT(*) DESC) rank
 		FROM 
 			dwh.f_order fo
 		GROUP BY
