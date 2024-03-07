@@ -23,7 +23,7 @@ dwh_top_craftsman AS (
 		(SELECT
 			fo.customer_id,
 			fo.craftsman_id,
-			DENSE_RANK() OVER (PARTITION BY fo.customer_id ORDER BY COUNT(*) DESC) rank
+			ROW_NUMBER() OVER (PARTITION BY fo.customer_id ORDER BY COUNT(*) DESC) rank
 		FROM 
 			dwh.f_order fo
 		GROUP BY
@@ -41,7 +41,7 @@ top_product_type AS (
 		(SELECT
 			fo.customer_id as customer_id,
 			prod.product_type as product_type,
-			DENSE_RANK() OVER (PARTITION BY fo.customer_id ORDER BY COUNT(*) DESC) AS rank
+			ROW_NUMBER() OVER (PARTITION BY fo.customer_id ORDER BY COUNT(*) DESC) AS rank
 		FROM 
 			dwh.f_order fo
 			INNER join dwh.d_product prod ON fo.product_id = prod.product_id
